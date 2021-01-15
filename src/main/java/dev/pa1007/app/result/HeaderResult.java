@@ -21,6 +21,26 @@ public class HeaderResult extends Result {
         Missing = missing;
     }
 
+    public double getLibAccNb() {
+        return libAccNb;
+    }
+
+    public String getLibAccFrac() {
+        return libAccFrac;
+    }
+
+    public double getProjAccNb() {
+        return ProjAccNb;
+    }
+
+    public String getProjAccFrac() {
+        return ProjAccFrac;
+    }
+
+    public String getMissing() {
+        return Missing;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", HeaderResult.class.getSimpleName() + "[", "]")

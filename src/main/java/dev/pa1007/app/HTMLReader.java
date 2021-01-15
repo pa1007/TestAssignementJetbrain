@@ -1,10 +1,12 @@
 package dev.pa1007.app;
 
-import dev.pa1007.app.result.HeaderResult;
+import dev.pa1007.app.result.ModuleResult;
+import dev.pa1007.app.utils.Utils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class HTMLReader {
@@ -15,8 +17,8 @@ public class HTMLReader {
 
         Document docu = Jsoup.parse(new File("ts-algorithms-test.html"), "UTF-8", "http://result.com/");
 
-        HeaderResult res = HeaderResult.parseHeader(docu.getElementsByTag("h3").get(0));
-        System.out.println(res);
+        List<ModuleResult> allModuleRes = Utils.interpretModules(docu);
+
     }
 
 }
