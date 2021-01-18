@@ -1,6 +1,6 @@
 package dev.pa1007.app.result;
 
-public class ElementResult extends Result {
+public class ElementResult {
 
     private String text;
 

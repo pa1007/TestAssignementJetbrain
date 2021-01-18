@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class ClassResult extends Result {
+public class ClassResult {
 
     private static Map<String, ClassResult> instanceMap = new HashMap<>();
 

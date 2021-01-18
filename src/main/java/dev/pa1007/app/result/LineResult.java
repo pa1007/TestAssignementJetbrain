@@ -1,6 +1,5 @@
 package dev.pa1007.app.result;
 
-import dev.pa1007.app.result.ElementResult;
 import dev.pa1007.app.result.subelem.PredictionElementResult;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,26 +7,41 @@ import java.util.stream.Collectors;
 
 public class LineResult {
 
-    private List<ElementResult>           allElement;
-    private List<PredictionElementResult> importantElement;
+    private       List<PredictionElementResult> importantElement;
+    private final String                        from;
+    private       int                           lineNumber;
 
-    public LineResult() {
-        allElement = new ArrayList<>();
+    public LineResult(String fromLine, int lineNumber) {
+        this.from = fromLine;
+        this.lineNumber = lineNumber;
         importantElement = new ArrayList<>();
     }
 
-    public void addElement(ElementResult res) {
-        allElement.add(res);
+    public List<PredictionElementResult> getImportantElement() {
+        return importantElement;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public int getLineNumber() {
+        return lineNumber;
     }
 
     public void addImportantElement(PredictionElementResult res) {
         importantElement.add(res);
-        addElement(res);
+    }
+
+    public void addAllImportantElement(List<PredictionElementResult> predictionElements) {
+        importantElement.addAll(predictionElements);
     }
 
     @Override
     public String toString() {
         //todo : Remake to add easy to read expression
-        return allElement.stream().map(ElementResult::toString).collect(Collectors.joining(" "));
+        return importantElement.stream().map(ElementResult::toString).collect(Collectors.joining(" "))
+               + "\n from (" + lineNumber + ") : "
+               + from;
     }
 }

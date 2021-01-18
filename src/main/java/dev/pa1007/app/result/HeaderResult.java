@@ -4,7 +4,7 @@ import dev.pa1007.app.result.builder.HeaderResultBuilder;
 import org.jsoup.nodes.Element;
 import java.util.StringJoiner;
 
-public class HeaderResult extends Result {
+public class HeaderResult {
 
     private double libAccNb;
     private String libAccFrac;
