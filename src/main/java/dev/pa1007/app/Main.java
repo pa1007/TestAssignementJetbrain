@@ -20,6 +20,9 @@ public class Main {
             else {
                 if (arguments.length > 2) {
 
+
+
+
                 }
                 else {
                     System.err.println("Please provide all three required arguments \n" +
