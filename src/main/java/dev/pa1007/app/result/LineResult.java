@@ -39,8 +39,7 @@ public class LineResult {
 
     @Override
     public String toString() {
-        //todo : Remake to add easy to read expression
-        return importantElement.stream().map(ElementResult::toString).collect(Collectors.joining(" "))
+        return importantElement.stream().map(PredictionElementResult::toString).collect(Collectors.joining(" "))
                + "\n from (" + lineNumber + ") : "
                + from;
     }

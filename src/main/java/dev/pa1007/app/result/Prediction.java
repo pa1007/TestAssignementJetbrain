@@ -14,8 +14,14 @@ public class Prediction {
     }
 
 
+    public void addSelectedFromError(ClassResult classResul) {
+        if (!preds.containsKey(classResul)) {
+            preds.put(classResul, 100D);
+        }
+    }
+
     public void addPred(ClassResult classResult, String pourcent) {
-        preds.put(classResult, Double.valueOf(pourcent));
+        preds.put(classResult, Double.valueOf(pourcent.replace(",", ".")));
     }
 
     public List<Map.Entry<ClassResult, Double>> getSortedEntry() {

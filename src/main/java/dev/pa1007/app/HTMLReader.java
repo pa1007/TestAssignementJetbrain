@@ -35,6 +35,10 @@ public class HTMLReader {
 
         List<ModuleResult> allModuleRes = Utils.interpretModules(docu);
         Scanner            sc           = new Scanner(System.in);
+        printModules(allModuleRes, sc);
+    }
+
+    public static void printModules(List<ModuleResult> allModuleRes, Scanner sc) {
         for (int i = 0; i < allModuleRes.size(); i++) {
             ModuleResult     module  = allModuleRes.get(i);
             List<LineResult> results = module.getResults();
@@ -85,7 +89,7 @@ public class HTMLReader {
                             Map.Entry<ClassResult, Double> entry     = sorted.get(l);
                             String                         className = entry.getKey().getClassName();
                             if (pred.getAction().equals(PredictionElementResult.Type.INCORRECT)) {
-                                if (l == 0 && entry.getValue() > 75.0) {
+                                if (l == 0 && entry.getValue() >= 50.0) {
                                     className = ANSI_GREEN + className;
                                 }
                                 if (className.equals(pred.getOldClass().getClassName())) {
@@ -106,8 +110,8 @@ public class HTMLReader {
                     System.out.println(sb.toString());
                     System.out.println(spacing + "(S)top | (N)ext >");
                     String next = sc.next();
-                    if (next.equalsIgnoreCase("S")) {
-                        //
+                    if (next.equalsIgnoreCase("S") || next.equalsIgnoreCase("stop")) {
+                        return;
                     }
                     else {
                         continue;

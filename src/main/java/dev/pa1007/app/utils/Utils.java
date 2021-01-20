@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 public class Utils {
 
     private static final Pattern MAIN_PATTERN            = Pattern.compile(
-            "\\[[a-zA-Z]{2}\\][0-9]*\\{[a-zA-Z]*\\}: [0-9]+\\.[0-9]{2}\\%");
+            "\\[[a-zA-Z]{2}\\][0-9]*\\{[a-zA-Z]*\\}: [0-9]+[,|.][0-9]{2}\\%");
     private static final String  HEAD_GROUP_MAIN_REGEX   = "\\[([a-zA-Z]{2})\\]([0-9]*)\\{([a-zA-Z]*)\\}";
     private static final Pattern HEAD_GROUP_MAIN_PATTERN = Pattern.compile(HEAD_GROUP_MAIN_REGEX, Pattern.MULTILINE);
     private static final Pattern GROUPED_MAIN_PATTERN    = Pattern.compile(
-            HEAD_GROUP_MAIN_REGEX + ": ([0-9]+\\.[0-9]{2})\\%");
+            HEAD_GROUP_MAIN_REGEX + ": ([0-9]+[,|.][0-9]{2})\\%");
 
 
     public static List<ModuleResult> interpretModules(Document docu) {
@@ -77,11 +77,15 @@ public class Utils {
                                 Utils.getClassResult(element.text()),
                                 prediction
                         );
-                        case "incorrect" -> PredictionElementResult.incorrect(
-                                "",
-                                Utils.getClassResult(element.text().split(" ")[3]),
-                                prediction
-                        );
+                        case "incorrect" -> {
+                            String[] s = element.text().split(" ");
+                            prediction.addSelectedFromError(Utils.getClassResult(s[1]));
+                            yield PredictionElementResult.incorrect(
+                                    "",
+                                    Utils.getClassResult(s[3]),
+                                    prediction
+                            );
+                        }
                         case "missing" -> PredictionElementResult.missed(
                                 "",
                                 Utils.getClassResult(element.text()),
@@ -102,7 +106,7 @@ public class Utils {
 
     private static Prediction processTitle(Element parent) {
         String       title1  = parent.attr("title");
-        Matcher      title   = MAIN_PATTERN.matcher(title1);
+        Matcher      title   = GROUPED_MAIN_PATTERN.matcher(title1);
         List<String> collect = title.results().map(MatchResult::group).collect(Collectors.toList());
         Prediction   p       = new Prediction();
         for (String s : collect) {

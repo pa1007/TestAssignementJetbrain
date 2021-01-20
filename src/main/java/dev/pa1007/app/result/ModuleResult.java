@@ -1,7 +1,7 @@
 package dev.pa1007.app.result;
 
-import java.util.ArrayList;
-import java.util.List;
+import dev.pa1007.app.result.subelem.PredictionElementResult;
+import java.util.*;
 
 public class ModuleResult {
 
@@ -24,6 +24,26 @@ public class ModuleResult {
 
     public void addLineResult(LineResult lr) {
         results.add(lr);
+    }
+
+    public Map<String, String> getResult() {
+        Map<String, String> res = new HashMap<>();
+        res.put("Lines with prediction", String.valueOf(results.size()));
+        res.put(
+                "correct prediction ",
+                String.valueOf(results.stream().filter(Objects::nonNull).map((x) -> x.getImportantElement().stream().filter(
+                        Objects::nonNull)
+                        .filter((t) -> t.getAction().equals(PredictionElementResult.Type.CORRECT))
+                        .count()).reduce(0L, Long::sum))
+        );
+        res.put(
+                "incorrect prediction ",
+                String.valueOf(results.stream().filter(Objects::nonNull).map((x) -> x.getImportantElement().stream().filter(
+                        Objects::nonNull)
+                        .filter((t) -> t.getAction().equals(PredictionElementResult.Type.INCORRECT))
+                        .count()).reduce(0L, Long::sum))
+        );
+        return res;
     }
 
 
