@@ -21,7 +21,7 @@ public class Main {
      *                  (already pre-compiled with tsc) and an input Typescript file as named CLI arguments and print
      *                  the results to stdout.
      */
-    public static void main(String[] arguments) throws IOException {
+    public static void main(String[] arguments) throws IOException, InterruptedException {
         if (arguments.length > 0) {
             if (arguments[0].equals("--parseHtml")) {
                 if (arguments.length > 1) {
@@ -73,7 +73,7 @@ public class Main {
                             System.out.println(Statistics.returnPrintableString());
                         }
                         else if (x.equalsIgnoreCase("stop")) {
-                          return;
+                            return;
                         }
                         else {
                             HTMLReader.printModules(allModuleRes, sc);
@@ -87,6 +87,10 @@ public class Main {
                                        " Usage : {Pre-trained model path} {parsingFromFile.ts path} {Input Typescript file}");
                 }
             }
+        }
+        else {
+            System.err.println("Please provide all three required arguments \n" +
+                               " Usage : {Pre-trained model path} {parsingFromFile.ts path} {Input Typescript file}");
         }
     }
 
