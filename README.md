@@ -36,6 +36,12 @@ So this repository is my version of this project, it needs 3 arguments, the mode
 
 This use Lambda net, after all the process done by lambda net, you will have a prompt to see the statistics or the result line by line. 
 
+Also if you don't want to re-pass the algorithm and you have the html file given by the lambda net program you can do 
+
+
+
+All given example should work out of the zip file or git repository [html parsing](#other) 
+
 # Version :
 
 Java version used is **java 14**, if you are on windows this is not a problem if you run it with the [first solution](#WindowsSol)  .
@@ -123,7 +129,56 @@ https://github.com/pa1007/TestAssignementJetbrain/tags/
    runMain dev.pa1007.app.Main example/models/testModel example/script/ts/parsingFromFile.js example/data/ts/
    ```
 
-   
+
+
+
+## <a id="other"> </a>Other functionality
+
+You can take a result html file given by the lambda net processing for that you will have to replace the argument given to the program, 
+
+With the .exe : 
+
+```
+Assignment.exe --parseHtml {HTML file}
+```
+
+So with a working example : 
+
+```
+Assignment.exe --parseHtml example/result/res.html
+```
+
+
+
+With the jar : 
+
+```
+java -jar Assignment.jar --parseHtml {HTML file}
+```
+
+So with a working example : 
+
+```
+java -jar Assignment.jar --parseHtml example/result/res.html
+```
+
+
+
+With sbt : 
+
+```
+sbt runMain dev.pa1007.app.Main --parseHtml {HTML file}
+```
+
+So with a working example : 
+
+```
+sbt runMain dev.pa1007.app.Main --parseHtml example/result/res.html
+```
+
+
+
+
 
 ## Thank you
 
