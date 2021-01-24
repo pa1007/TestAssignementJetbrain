@@ -321,13 +321,13 @@ object PrepareRepos {
     SimpleMath.withErrorMessage(s"In project: $projectRoot") {
       import libDefs._
 
-      val p = ProgramParsing.parseGProjectFromRoot(
-        projectRoot,
-        filter = (path: Path) => {
-          path.segments.forall(!skipSet.contains(_))
-        },
-        parsingFromFile = parsingFromFile
-      )
+       val p = ProgramParsing.parseGProjectFromRoot(
+          projectRoot,
+          filter = (path: Path) => {
+            path.segments.forall(!skipSet.contains(_))
+          },
+          parsingFromFile = parsingFromFile
+        )
 
       if (shouldPrintProject) println {
         p.prettyPrint

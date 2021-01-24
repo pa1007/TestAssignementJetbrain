@@ -88,7 +88,8 @@ public class HTMLReader {
                         if (sorted.size() > l) {
                             Map.Entry<ClassResult, Double> entry     = sorted.get(l);
                             String                         className = entry.getKey().getClassName();
-                            if (pred.getAction().equals(PredictionElementResult.Type.INCORRECT)) {
+                            if (pred.getAction().equals(PredictionElementResult.Type.INCORRECT)
+                                || pred.getAction().equals(PredictionElementResult.Type.ERROR)) {
                                 if (l == 0 && entry.getValue() >= 50.0) {
                                     className = ANSI_GREEN + className;
                                 }

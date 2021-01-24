@@ -91,6 +91,7 @@ public class Utils {
                                 Utils.getClassResult(element.text()),
                                 prediction
                         );
+                        case "error" -> PredictionElementResult.error();
                         default -> null;
                     });
 

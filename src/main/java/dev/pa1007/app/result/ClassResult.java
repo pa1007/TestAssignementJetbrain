@@ -62,7 +62,12 @@ public class ClassResult {
 
     @Override
     public String toString() {
-        return "\uD835\uDCDB[" + id + "]" + classNumber + "{" + className + "}";
+        if (className.equalsIgnoreCase("Error")) {
+            return "[Truth Missing]";
+        }
+        else {
+            return "\uD835\uDCDB[" + id + "]" + classNumber + "{" + className + "}";
+        }
     }
 
     public static ClassResult getInstance(String className, String classNumber, String id) {

@@ -52,10 +52,15 @@ public class PredictionElementResult extends ElementResult {
         return new PredictionElementResult(text, Type.CORRECT, result, prediction);
     }
 
+    public static PredictionElementResult error() {
+        return new PredictionElementResult("",Type.ERROR,ClassResult.getInstance("Error","",""),new Prediction());
+    }
+
     public enum Type {
         MISSED,
         CORRECT,
-        INCORRECT;
+        INCORRECT,
+        ERROR;
 
         public String getColor() {
             return switch (name()) {

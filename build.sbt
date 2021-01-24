@@ -47,7 +47,10 @@ libraryDependencies ++= Seq(
   "com.github.daddykotex" %% "courier" % "1.0.0", // for email notifications
   //  "be.botkop" %% "numsca" % "0.1.4",
   // for building numsca
-  "org.nd4j" % nd4jBinary % "1.0.0-beta4" withSources(),
+  "org.nd4j" % nd4jBinary % "1.0.0-beta4",
+  "org.nd4j" % nd4jBinary % "1.0.0-beta4" % "runtime",
+  "org.nd4j" % "nd4j-native" % "1.0.0-beta4" % "runtime" classifier ("windows-x86_64") ,
+  "org.nd4j" % "nd4j-native" % "1.0.0-beta4" classifier ("windows-x86_64") ,
   "org.nd4j" % "nd4j-context" % "1.0.0-beta4",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",
   "org.typelevel" %% "cats-core" % "2.0.0-M3" withSources(),
@@ -60,6 +63,7 @@ libraryDependencies ++= Seq(
 )
 addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.0")
 mainClass in assembly := Some("dev.pa1007.app.Main")
+fullClasspath in assembly := (fullClasspath in Runtime).value
 assemblyJarName in assembly := "lambdaNetApp.jar"
 assemblyMergeStrategy in assembly := {
   case PathList("META-INF", xs@_*) => MergeStrategy.discard
