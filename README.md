@@ -111,13 +111,17 @@ https://github.com/pa1007/TestAssignementJetbrain/releases/download/v1.0/Assignm
 
 2. Clone the project 
 
-3. in the project directory run sbt command:
+3. Download example files:  https://github.com/pa1007/TestAssignementJetbrain/releases/download/v1.0/example.zip
+
+4. Unzip and add example to project
+
+5. in the project directory run sbt command:
 
    ```
    sbt
    ```
 
-4. Wait that sbt load the project and then run 
+6. Wait that sbt load the project and then run 
 
    ```
    runMain dev.pa1007.app.Main {Path to the model Folder} {Path to the parsingFromFile.ts already compiled} {Input typescript project directory}
