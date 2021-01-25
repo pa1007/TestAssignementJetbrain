@@ -52,9 +52,9 @@ So you have 3 solution to run this program :
 
 ## <a id="WindowsSol"> </a>On Windows
 
-Download the .zip file available on the release page or a the link below : 
+Download the Assigment.zip file available on the release page or at the link below : 
 
-https://github.com/pa1007/TestAssignementJetbrain/tags/
+https://github.com/pa1007/TestAssignementJetbrain/releases/download/v1.0/Assignment.zip
 
 
 
@@ -79,9 +79,9 @@ https://github.com/pa1007/TestAssignementJetbrain/tags/
 
 ## On Linux or Windows (if the first solution doesn't work) :
 
-Download the .zip file available on the release page or a the link below : 
+Download the Assigment.zip file available on the release page or at the link below : 
 
-https://github.com/pa1007/TestAssignementJetbrain/tags/
+https://github.com/pa1007/TestAssignementJetbrain/releases/download/v1.0/Assignment.zip
 
 
 
